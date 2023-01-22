@@ -25,6 +25,9 @@ app.use(express.json());
 
 app.use(cors({origin: "*"}));
 
+app.get("/", (req, res) => {
+    res.send("homepage");
+});
 
 app.use('/users',userRouter)
 app.use('/mens',mensRouter)
@@ -34,9 +37,6 @@ app.use('/cart',cartRouter);
 app.use("/order",orderRouter);
 
 
-app.get("/", (req, res) => {
-    res.send("homepage");
-});
 
 app.listen(port, async()=>{
     try{
