@@ -11,7 +11,7 @@ const Authentication = async (req, res, next) => {
         if (err) {
           return res.status(511).send("you are not authenticated2");
         }
-        req.body.UserId = decoded.userId;
+        req.body.UserId = decoded.UserId;
         next();
       });
   }
