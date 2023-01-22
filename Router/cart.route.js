@@ -8,7 +8,7 @@ const cartRouter = Router();
 
 cartRouter.get("/", async (req, res) => {
   const user_token=req.headers.authorization;
-  const decoded=jwt.verify(user_token, process.env.TOKEN_KEY);
+  const decoded=jwt.verify(user_token, process.env.tokenKey);
   const { UserId } = decoded;
 
   const items = await CART.find({ UserId: UserId });
@@ -30,7 +30,7 @@ cartRouter.delete("/delete/:id", async (req, res) => {
 
 cartRouter.delete("/orderdelete", async (req, res) => {
   const user_token=req.headers.authorization;
-  const decoded=jwt.verify(user_token, process.env.TOKEN_KEY);
+  const decoded=jwt.verify(user_token, process.env.tokenKey);
   const { UserId } = decoded;
   // let len=await CART.find({UserId:userId});
 

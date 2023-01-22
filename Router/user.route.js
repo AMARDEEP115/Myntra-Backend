@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const {USER} = require("../models/user.model");
 const { Router } = require("express");
 const userRouter = Router();
+require("dotenv").config();
 
 userRouter.get("/", async (req, res) => {
   let users= await USER.find();
@@ -11,9 +12,8 @@ userRouter.get("/", async (req, res) => {
 });
 
 userRouter.delete("/remove/:id",async (req,res)=>{
-  let id=req.params.id;
-  console.log(req.params);
-  await USER.findByIdAndDelete({_id:id});
+  let Id=req.params.id;
+  await USER.findByIdAndDelete({_id:Id});
   res.send("User Deleted");
 });
 
@@ -48,7 +48,7 @@ userRouter.post("/login", async (req, res) => {
     if (result) {
       const token = jwt.sign(
         { email: user.email, UserId: user._id },
-        process.env.TOKEN_KEY
+        process.env.tokenKey
       );
       res.send({
         message: "login successful",

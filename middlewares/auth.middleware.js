@@ -7,7 +7,7 @@ const Authentication = async (req, res, next) => {
   if (!user_token) {
     return res.status(511).send("you are not authenticated");
   } else {
-      await jwt.verify(user_token, process.env.TOKEN_KEY, function (err, decoded) {
+      await jwt.verify(user_token, process.env.tokenKey, function (err, decoded) {
         if (err) {
           return res.status(511).send("you are not authenticated2");
         }

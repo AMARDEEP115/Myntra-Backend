@@ -16,7 +16,7 @@ orderRouter.post("/create",  async (req, res) => {
 
 orderRouter.get("/", async (req, res) => {
     const user_token=req.headers.authorization;
-    const decoded=jwt.verify(user_token, process.env.TOKEN_KEY);
+    const decoded=jwt.verify(user_token, process.env.tokenKey);
     const { UserId } = decoded;
   
     const items = await orderModel.find({ UserId: UserId });
