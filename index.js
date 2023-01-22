@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cors({origin: "*"}));
 
 app.get("/", (req, res) => {
-    res.send("homepage");
+    res.send("homepage routes are /users /mens /womens /cart /order");
 });
 
 app.use('/users',userRouter)
