@@ -16,16 +16,15 @@ orderRouter.post("/create",  async (req, res) => {
 orderRouter.get("/", async (req, res) => {
     const user_token=req.headers.authorization;
     const decoded=jwt.verify(user_token, process.env.TOKEN_KEY);
-    const { userId } = decoded;
+    const { UserId } = decoded;
   
-    const items = await orderModel.find({ userId: userId });
+    const items = await orderModel.find({ UserId: UserId });
   
     res.status(200).send(items);
 });
 
 orderRouter.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   const data = await MEN.find({ _id: id });
   res.status(200).send(data);
 });

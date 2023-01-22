@@ -30,7 +30,6 @@ womensRouter.get("/", async (req, res) => {
 
 womensRouter.get("/productdetails/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(id);
 
   const data = await WOMEN.find({ _id: id });
   res.status(200).send(data);
