@@ -17,6 +17,13 @@ userRouter.delete("/remove/:id",async (req,res)=>{
   res.send("User Deleted");
 });
 
+userRouter.patch("/update/:id",async (req,res)=>{
+  let Id=req.params.id;
+  let upd=req.body;
+  await USER.findByIdAndUpdate({_id: Id},{upd});
+  res.send("User Updated");
+});
+
 userRouter.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 

@@ -24,6 +24,11 @@ orderRouter.get("/", async (req, res) => {
     res.status(200).send(items);
 });
 
+orderRouter.get("/all", async (req, res) => {
+  const items = await orderModel.find();
+  res.status(200).send(items);
+});
+
 orderRouter.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
   const data = await MEN.find({ _id: id });

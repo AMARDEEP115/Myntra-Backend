@@ -28,7 +28,6 @@ mensRouter.get("/", async (req, res) => {
 
 mensRouter.get("/productdetails/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(id);
 
   const data = await MEN.find({ _id: id });
   res.status(200).send(data);
