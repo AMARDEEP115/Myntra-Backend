@@ -31,7 +31,7 @@ orderRouter.get("/all", async (req, res) => {
 
 orderRouter.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
-  const data = await MEN.find({ _id: id });
+  const data = await orderModel.findOneAndDelete({ _id: id });
   res.status(200).send(data);
 });
 
